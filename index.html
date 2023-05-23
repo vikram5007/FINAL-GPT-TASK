@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url('assets/images/college\ ready.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .login-box {
+      max-width: 400px;
+      margin: 0 auto;
+      margin-top: 50vh;
+      transform: translateY(-50%);
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .login-box h1,
+    .login-box button {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .login-box input {
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 5px;
+      transition: box-shadow 0.3s;
+      padding-left: 10px;
+      padding-right: 35px;
+    }
+
+    .login-box input:focus {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 0, 0, 0.4), 0 0 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .input-group-append {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      animation: pulse 0.5s;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .error {
+      color: red;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .remember-password-btn {
+      font-size: 12px;
+      padding: 5px 10px;
+      margin-right: 5px;
+    }
+
+    .forgot-password {
+      font-size: 12px;
+      color: blue;
+      text-decoration: none;
+    }
+  </style>
+  <title>Login Page</title>
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      
+      <h1 class="text-center">LOGIN</h1>
+      <form>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email or Username</label>
+          <input type="text" class="form-control" id="email" placeholder="Enter your email or username">
+          <small id="emailError" class="error"></small>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            <span class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="password-toggle">
+                <i class="fas fa-eye"></i>
+              </button>
+            </span>
+          </div>
+          <small id="passwordError" class="error"></small>
+        </div>
+        <div class="remember-forgot">
+          <button type="button" class="btn btn-sm btn-outline-primary remember-password-btn">Remember Password</button>
+          <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+      <div class="mt-4 text-center">
+        <p>Or SignUp Using </p>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-outline-primary mx-2" onclick="loginWithGoogle()"><i class="fab fa-google"></i> Google</button>
+          <button class="btn btn-outline-primary mx-2" onclick="loginWithTwitter()"><i class="fab fa-twitter"></i> Twitter</button>
+          <button class="btn btn-outline-primary mx-2" onclick="loginWithFacebook()"><i class="fab fa-facebook"></i> Facebook</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const passwordToggle = document.getElementById('password-toggle');
+
+    function validateEmailOrUsername(emailOrUsername) {
+      // Email/Username regex pattern
+      const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return pattern.test(emailOrUsername);
+    }
+
+    function validatePassword(password) {
+      // Password regex pattern
+      // Add your desired password validation pattern here
+      const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,16}$/;
+      return pattern.test(password);
+    }
+
+    function validateForm(event) {
+      event.preventDefault();
+
+      const emailOrUsername = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      // Reset error messages
+      emailError.textContent = '';
+      passwordError.textContent = '';
+
+      // Validate email/username
+      if (!validateEmailOrUsername(emailOrUsername)) {
+        emailError.textContent = 'Please enter a valid email address or username';
+        return;
+      }
+
+      // Validate password
+      if (!validatePassword(password)) {
+        passwordError.textContent = 'Please enter a valid password';
+        return;
+      }
+
+      // Validation successful, redirect to welcome.html
+      window.location.href = 'welcome.html';
+    }
+
+    // Add form submit event listener
+    const loginForm = document.querySelector('form');
+    loginForm.addEventListener('submit', validateForm);
+
+    // Toggle password visibility
+    passwordToggle.addEventListener('click', function () {
+      const type = passwordInput.getAttribute('type');
+      passwordInput.setAttribute('type', type === 'password' ? 'text' : 'password');
+      const iconClass = type === 'password' ? 'fa-eye-slash' : 'fa-eye';
+      passwordToggle.querySelector('i').classList.toggle('fa-eye-slash', iconClass === 'fa-eye-slash');
+      passwordToggle.querySelector('i').classList.toggle('fa-eye', iconClass === 'fa-eye');
+    });
+
+    function loginWithGoogle() {
+      // Handle login with Google API here
+      console.log('Logging in with Google');
+    }
+
+    function loginWithTwitter() {
+      // Handle login with Twitter API here
+      console.log('Logging in with Twitter');
+    }
+
+    function loginWithFacebook() {
+      // Handle login with Facebook API here
+      console.log('Logging in with Facebook');
+    }
+  </script>
+</body>
+</html>

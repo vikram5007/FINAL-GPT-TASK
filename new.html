@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f2f2f2;
+      background-image: url("/assets/images/3d-render-gradient-7680x4800-10996.jpg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .login-container {
+      width: 800px; /* Set the width to 800px */
+      height: 600px; /* Set the height to 600px */
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0px 50px rgba(247, 10, 247, 0.384);
+      backdrop-filter: blur(10px);
+      background-color: rgba(180, 58, 58, 0);
+    }
+
+    .login-container img {
+      height: 100%;
+      max-width: 50%;
+      margin-right: 0;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+
+    .login-container .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .login-container h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #fff;
+      text-align: center;
+      font-weight: bold; /* Add font-weight property for bold */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Add text shadow */
+    }
+
+    .login-container form {
+      width: 100%;
+    }
+
+    .login-container .form-group {
+      position: relative;
+    }
+
+    .login-container .form-group input {
+      padding-left: 40px; /* Add left padding for the icon */
+    }
+
+    .login-container .form-group i.fa {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: #999; /* Icon color */
+    }
+
+    .login-container input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out; /* Added transition */
+    }
+
+    .login-container input[type="submit"]:hover {
+      background-color: #45a049;
+      transform: scale(1.1); /* Added scale transformation */
+    }
+
+    .login-container .form-group a.btn-link {
+      color: #fff;
+    }
+    
+    .login-container .form-group.forgot-password {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .login-container .form-group.forgot-password hr {
+      width: 100%; /* Updated width */
+      margin-top: 5px;
+      margin-bottom: 10px;
+      background-color: #fff; /* Updated color */
+    }
+
+    .login-container .form-group.signup-options {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .login-container .form-group.signup-options a {
+      color: #fff;
+      margin-right: 10px;
+    }
+    
+    .login-container .form-group.signup-options i.fa {
+      margin-right: 5px;
+      font-size: 2rem;
+    }
+
+    .login-container .form-group.signup-options h3 {
+      color: #fff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img src="/assets/images/10.jpg" alt="Logo">
+    <div class="content">
+      <h2>Login Form</h2>
+      <form action="login.php" method="post">
+        <div class="form-group">
+          <input type="text" class="form-control" name="username" placeholder="Username" required>
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" placeholder="Password" required>
+          <i class="fa fa-lock"></i>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="remember">
+            <label class="form-check-label" for="remember" style="color: #fff;">Remember password</label>
+          </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Login">
+      </form>
+      <div class="form-group forgot-password">
+        <a href="#" class="btn btn-link" style="color: #fff;">Forgot password?</a>
+        <hr>
+        <h3 style="color: #fff; font-weight: bold;">Sign up using</h3> <!-- Added font-weight -->
+      </div>
+      <div class="form-group signup-options">
+        <a href="#" class="btn btn-link">
+          <i class="fab fa-google fa-2x"></i>
+        </a>
+        <a href="#" class="btn btn-link">
+          <i class="fab fa-facebook fa-2x"></i>
+        </a>
+        <a href="#" class="btn btn-link">
+          <i class="fab fa-twitter fa-2x"></i> 
+        </a>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

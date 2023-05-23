@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f1f1f1;
+    }
+
+    .welcome-message {
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 30px;
+      color: #333;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      animation: slideIn 1s ease-in;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <title>Welcome Page</title>
+</head>
+<body>
+  <div class="welcome-message">
+    <h1>Welcome!</h1>
+    <p>This is your welcome page with an animated welcome message.</p>
+  </div>
+</body>
+</html>
