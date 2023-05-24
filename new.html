@@ -21,8 +21,8 @@
     }
 
     .login-container {
-      width: 800px; /* Set the width to 800px */
-      height: 600px; /* Set the height to 600px */
+      width: 800px;
+      height: 600px;
       border-radius: 15px;
       display: flex;
       align-items: center;
@@ -55,8 +55,8 @@
       margin-bottom: 20px;
       color: #fff;
       text-align: center;
-      font-weight: bold; /* Add font-weight property for bold */
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Add text shadow */
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     }
 
     .login-container form {
@@ -68,7 +68,7 @@
     }
 
     .login-container .form-group input {
-      padding-left: 40px; /* Add left padding for the icon */
+      padding-left: 40px;
     }
 
     .login-container .form-group i.fa {
@@ -76,7 +76,7 @@
       top: 50%;
       left: 10px;
       transform: translateY(-50%);
-      color: #999; /* Icon color */
+      color: #999;
     }
 
     .login-container input[type="submit"] {
@@ -86,28 +86,28 @@
       color: #fff;
       border: none;
       cursor: pointer;
-      transition: transform 0.3s ease-in-out; /* Added transition */
+      transition: transform 0.3s ease-in-out;
     }
 
     .login-container input[type="submit"]:hover {
       background-color: #45a049;
-      transform: scale(1.1); /* Added scale transformation */
+      transform: translateY(-5px);
     }
 
     .login-container .form-group a.btn-link {
       color: #fff;
     }
-    
+
     .login-container .form-group.forgot-password {
       text-align: center;
       margin-top: 10px;
     }
 
     .login-container .form-group.forgot-password hr {
-      width: 100%; /* Updated width */
+      width: 100%;
       margin-top: 5px;
       margin-bottom: 10px;
-      background-color: #fff; /* Updated color */
+      background-color: #fff;
     }
 
     .login-container .form-group.signup-options {
@@ -119,7 +119,7 @@
       color: #fff;
       margin-right: 10px;
     }
-    
+
     .login-container .form-group.signup-options i.fa {
       margin-right: 5px;
       font-size: 2rem;
@@ -129,14 +129,66 @@
       color: #fff;
       font-weight: bold;
     }
+
+    /* Shake animation */
+    .error-shake {
+      animation: shake 0.4s;
+    }
+
+    @keyframes shake {
+      10%, 90% {
+        transform: translateX(-10px);
+      }
+
+      20%, 80% {
+        transform: translateX(10px);
+      }
+
+      30%, 50%, 70% {
+        transform: translateX(-10px);
+      }
+
+      40%, 60% {
+        transform: translateX(10px);
+      }
+    }
   </style>
+  <script>
+    function validateForm() {
+      var username = document.forms["loginForm"]["username"].value;
+      var password = document.forms["loginForm"]["password"].value;
+      var usernameInput = document.forms["loginForm"]["username"];
+      var passwordInput = document.forms["loginForm"]["password"];
+
+      // Validate username
+      if (!/^[a-zA-Z0-9_]{3,16}$/.test(username)) {
+        alert("Error: Username must contain only letters, numbers, or underscores (3-16 characters)!");
+        usernameInput.classList.add("error-shake");
+        return false;
+      }
+
+      // Validate password
+      if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()_\-+=]{8,16}$/.test(password)) {
+        alert("Error: Password must be 8-16 characters long and can contain symbols, uppercase letters, lowercase letters, and numbers!");
+        passwordInput.classList.add("error-shake");
+        return false;
+      }
+    }
+
+  
+
+    // Remove shake animation after it ends
+    document.addEventListener("animationend", function(event) {
+      event.target.classList.remove("error-shake");
+    });
+  </script>
 </head>
 <body>
   <div class="login-container">
     <img src="/assets/images/10.jpg" alt="Logo">
     <div class="content">
       <h2>Login Form</h2>
-      <form action="login.php" method="post">
+      <form name="loginForm" action="login.php" method="post" onsubmit="return validateForm()">
         <div class="form-group">
           <input type="text" class="form-control" name="username" placeholder="Username" required>
           <i class="fa fa-user"></i>
@@ -156,7 +208,7 @@
       <div class="form-group forgot-password">
         <a href="#" class="btn btn-link" style="color: #fff;">Forgot password?</a>
         <hr>
-        <h3 style="color: #fff; font-weight: bold;">Sign up using</h3> <!-- Added font-weight -->
+        <h3 style="color: #fff; font-weight: bold;">Sign up using</h3>
       </div>
       <div class="form-group signup-options">
         <a href="#" class="btn btn-link">
@@ -172,7 +224,7 @@
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
