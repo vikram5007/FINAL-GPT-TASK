@@ -18,7 +18,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      overflow:hidden;
+      overflow: hidden;
     }
 
     .animated-image {
@@ -208,31 +208,29 @@
   </style>
   <script>
     function validateForm() {
-    var username = document.forms["loginForm"]["username"].value;
-    var password = document.forms["loginForm"]["password"].value;
-    var usernameInput = document.forms["loginForm"]["username"];
-    var passwordInput = document.forms["loginForm"]["password"];
+      var username = document.forms["loginForm"]["username"].value;
+      var password = document.forms["loginForm"]["password"].value;
+      var usernameInput = document.forms["loginForm"]["username"];
+      var passwordInput = document.forms["loginForm"]["password"];
 
-    // Validate username
-    if (!/^[a-zA-Z0-9_]{3,16}$/.test(username)) {
-      showAlert("Error: Username must contain only letters, numbers, or underscores (3-16 characters)!");
-      usernameInput.classList.add("error-shake");
-      return false;
-    }
+      // Validate username
+      if (!/^[a-zA-Z0-9_]{3,16}$/.test(username)) {
+        showAlert("Error: Username must contain only letters, numbers, or underscores (3-16 characters)!");
+        usernameInput.classList.add("error-shake");
+        return false;
+      }
 
-    // Validate password
-    if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()_\-+=]{8,16}$/.test(password)) {
-      showAlert("Error: Password must be 8-16 characters long and can contain symbols, uppercase letters, lowercase letters, and numbers!");
-      passwordInput.classList.add("error-shake");
-      return false;
+      // Validate password
+      if (!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_\-+=])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()_\-+=]{8,16}$/.test(password)) {
+        showAlert("Error: Password must be 8-16 characters long and can contain symbols, uppercase letters, lowercase letters, and numbers!");
+        passwordInput.classList.add("error-shake");
+        return false;
+      }
+
+      // Redirect to welcome.html
+      window.location.href = "welcome.html";
+      return false; // Prevent form submission
     }
-    
-    // Redirect to welcome.html
-    window.location.href = "welcome.html";
-    return false; // Prevent form submission
-  }
-    
-  
 
     // Remove shake animation after it ends
     document.addEventListener("animationend", function(event) {
@@ -257,6 +255,17 @@
         }, 300);
       }, 3000);
     }
+    
+    // Function to handle forgot password
+    function forgotPassword() {
+      var email = prompt("Please enter your email address:");
+
+      if (email) {
+        // Perform password reset logic here
+
+        showAlert("Password reset email has been sent to: " + email);
+      }
+    }
   </script>
 </head>
 <body>
@@ -277,7 +286,7 @@
           <input type="submit" value="Login">
         </div>
         <div class="form-group forgot-password">
-          <a href="#" class="btn-link">Forgot password?</a>
+          <a href="javascript:void(0)" class="btn-link" onclick="forgotPassword()">Forgot password?</a>
           <hr>
         </div>
         <div class="form-group signup-options">
